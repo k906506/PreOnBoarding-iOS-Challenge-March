@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PreOnBoarding-iOS-Challenge-March
 //
-//  Created by 황교범 on 2023/02/26.
+//  Created by 고도 on 2023/02/26.
 //
 
 import UIKit
