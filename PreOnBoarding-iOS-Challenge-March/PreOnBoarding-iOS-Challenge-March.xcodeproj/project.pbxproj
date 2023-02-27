@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		BF5CF14729AB7FA3006CCC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CF14629AB7FA3006CCC60 /* AppDelegate.swift */; };
 		BF5CF14929AB7FA3006CCC60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CF14829AB7FA3006CCC60 /* SceneDelegate.swift */; };
-		BF5CF14B29AB7FA3006CCC60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CF14A29AB7FA3006CCC60 /* ViewController.swift */; };
+		BF5CF14B29AB7FA3006CCC60 /* CustomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CF14A29AB7FA3006CCC60 /* CustomImageViewController.swift */; };
 		BF5CF15029AB7FA4006CCC60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5CF14F29AB7FA4006CCC60 /* Assets.xcassets */; };
 		BF5CF15329AB7FA4006CCC60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5CF15129AB7FA4006CCC60 /* LaunchScreen.storyboard */; };
+		BF5CF15B29AB84F6006CCC60 /* CustomImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CF15A29AB84F6006CCC60 /* CustomImageCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF5CF14329AB7FA3006CCC60 /* PreOnBoarding-iOS-Challenge-March.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PreOnBoarding-iOS-Challenge-March.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5CF14629AB7FA3006CCC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5CF14829AB7FA3006CCC60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BF5CF14A29AB7FA3006CCC60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF5CF14A29AB7FA3006CCC60 /* CustomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageViewController.swift; sourceTree = "<group>"; };
 		BF5CF14F29AB7FA4006CCC60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5CF15229AB7FA4006CCC60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5CF15429AB7FA4006CCC60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5CF15A29AB84F6006CCC60 /* CustomImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +58,11 @@
 			children = (
 				BF5CF14629AB7FA3006CCC60 /* AppDelegate.swift */,
 				BF5CF14829AB7FA3006CCC60 /* SceneDelegate.swift */,
-				BF5CF14A29AB7FA3006CCC60 /* ViewController.swift */,
+				BF5CF14A29AB7FA3006CCC60 /* CustomImageViewController.swift */,
 				BF5CF14F29AB7FA4006CCC60 /* Assets.xcassets */,
 				BF5CF15129AB7FA4006CCC60 /* LaunchScreen.storyboard */,
 				BF5CF15429AB7FA4006CCC60 /* Info.plist */,
+				BF5CF15A29AB84F6006CCC60 /* CustomImageCellView.swift */,
 			);
 			path = "PreOnBoarding-iOS-Challenge-March";
 			sourceTree = "<group>";
@@ -134,8 +137,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF5CF14B29AB7FA3006CCC60 /* ViewController.swift in Sources */,
+				BF5CF14B29AB7FA3006CCC60 /* CustomImageViewController.swift in Sources */,
 				BF5CF14729AB7FA3006CCC60 /* AppDelegate.swift in Sources */,
+				BF5CF15B29AB84F6006CCC60 /* CustomImageCellView.swift in Sources */,
 				BF5CF14929AB7FA3006CCC60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
