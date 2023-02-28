@@ -31,7 +31,9 @@ class CustomImageViewController: UIViewController {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Load All Images"
         configuration.cornerStyle = .medium
+        
         button.configuration = configuration
+        button.addTarget(self, action: #selector(loadButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -40,6 +42,14 @@ class CustomImageViewController: UIViewController {
         super.viewDidLoad()
         
         setupLayout()
+    }
+    
+    @objc private func loadButtonTapped(_ sender: UIButton) {
+        for idx in 0..<numberOfItems {
+            guard let cell = collectionView.cellForItem(at: IndexPath(row: idx, section: 0)) as? CustomImageCellView else { return }
+            
+            cell.loadButtonTapped(sender)
+        }
     }
 }
 

@@ -29,7 +29,9 @@ final class CustomImageCellView: UICollectionViewCell {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Load"
         configuration.cornerStyle = .medium
+        
         button.configuration = configuration
+        button.addTarget(self, action: #selector(loadButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -42,6 +44,29 @@ final class CustomImageCellView: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func loadButtonTapped(_ sender: UIButton) {
+        // 이미지 로딩 과정에서 Default 이미지를 보여주는 코드
+        DispatchQueue.main.async {
+            self.imageView.image = UIImage(systemName: "photo")
+        }
+        
+        let url = URL(string: "https://picsum.photos/120/100")!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard error == nil,
+                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
+                  statusCode == 200 else { return }
+            
+            guard let imageData = data else { return }
+            
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: imageData)
+            }
+        }
+        
+        task.resume()
     }
 }
 
