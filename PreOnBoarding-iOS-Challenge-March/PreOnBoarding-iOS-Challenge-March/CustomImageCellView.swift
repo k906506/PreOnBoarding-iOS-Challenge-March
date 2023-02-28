@@ -50,23 +50,14 @@ final class CustomImageCellView: UICollectionViewCell {
         // 이미지 로딩 과정에서 Default 이미지를 보여주는 코드
         DispatchQueue.main.async {
             self.imageView.image = UIImage(systemName: "photo")
+            self.progressView.progress = 0
         }
         
         let url = URL(string: "https://picsum.photos/120/100")!
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard error == nil,
-                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
-                  statusCode == 200 else { return }
-            
-            guard let imageData = data else { return }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: imageData)
-            }
-        }
-        
-        task.resume()
+        let request = URLRequest(url: url)
+        let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+        let downloadTask = session.downloadTask(with: request)
+        downloadTask.resume()
     }
 }
 
@@ -79,15 +70,39 @@ private extension CustomImageCellView {
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
-
+        
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         progressView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
         progressView.trailingAnchor.constraint(equalTo: loadButton.leadingAnchor, constant: -12).isActive = true
         progressView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-
+        
         loadButton.translatesAutoresizingMaskIntoConstraints = false
         loadButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         loadButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4).isActive = true
+    }
+}
+
+extension CustomImageCellView: URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession,
+                    downloadTask: URLSessionDownloadTask,
+                    didFinishDownloadingTo location: URL) {
+        let imageData = try! Data(contentsOf: location)
+        let image = UIImage(data: imageData)
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
+    }
+    
+    func urlSession(_ session: URLSession,
+                    downloadTask: URLSessionDownloadTask,
+                    didWriteData bytesWritten: Int64,
+                    totalBytesWritten: Int64,
+                    totalBytesExpectedToWrite: Int64) {
+        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        DispatchQueue.main.async {
+            // self.progressView.progress = progress
+            self.progressView.setProgress(progress, animated: true)
+        }
     }
 }
