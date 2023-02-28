@@ -63,7 +63,7 @@ final class CustomImageCellView: UICollectionViewCell {
 
 private extension CustomImageCellView {
     func setupLayout() {
-        [imageView, progressView, loadButton].forEach { addSubview($0) }
+        [imageView, progressView, loadButton].forEach { self.contentView.addSubview($0) }
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
